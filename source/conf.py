@@ -39,7 +39,7 @@ doc_version = get_doc_version()
 # add extensions path for snippets
 sys.path.append(os.path.abspath("./_ext"))
 
-extensions = ['sphinxcontrib.matlab', 'sphinx.ext.autodoc', 'sphinx.ext.autosummary', 'sphinx_design', 'sphinx_copybutton', 'snippets']
+extensions = ['sphinxcontrib.matlab', 'sphinx.ext.autodoc', 'sphinx.ext.autosummary', 'sphinx_design', 'sphinx_copybutton', 'snippets', 'nbsphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
