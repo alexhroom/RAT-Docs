@@ -6,74 +6,67 @@ Examples
 A number of examples are provided to demonstrate the functionality available in the MATLAB and Python interface of RAT.
 
 
-.. tab-set::
+MATLAB
+======
 
-  .. tab-item:: Matlab
+Normal Calculation
+------------------
 
-    ******************
-    Normal Calculation
-    ******************
+.. toctree::
+   :maxdepth: 1   
+   
+   matlab/DSPC_standard_layers
+   matlab/DSPC_custom_layers
+   matlab/DSPC_custom_XY
 
-    .. toctree::
-       :maxdepth: 1   
-       
-       matlab/DSPC_standard_layers
-       matlab/DSPC_custom_layers
-       matlab/DSPC_custom_XY
+Domain Calculation
+------------------
 
-    ******************
-    Domain Calculation
-    ******************
+.. toctree::
+   :maxdepth: 1   
+   
+   matlab/domains_standard_layers
+   matlab/domains_custom_layers
+   matlab/domains_custom_XY
 
-    .. toctree::
-       :maxdepth: 1   
-       
-       matlab/domains_standard_layers
-       matlab/domains_custom_layers
-       matlab/domains_custom_XY
+Miscellaneous
+-------------
 
-    *************
-    Miscellaneous
-    *************
+.. toctree::
+   :maxdepth: 1  
+   
+   matlab/imaginary
+   matlab/convert_r1_project
+   matlab/custom_model_languages
 
-    .. toctree::
-       :maxdepth: 1  
-       
-       matlab/imaginary
-       matlab/convert_r1_project
-       matlab/custom_model_languages
 
-  .. tab-item:: Python
+Python
+======
 
-    ******************
-    Normal Calculation
-    ******************
+Normal Calculation
+------------------
 
-    .. toctree::
-       :maxdepth: 1   
-       
-       python/DSPC_standard_layers
-       python/DSPC_custom_layers
-       python/DSPC_custom_XY
+.. toctree::
+   :maxdepth: 1   
+   
+   python/DSPC_standard_layers
+   python/DSPC_custom_layers
+   python/DSPC_custom_xy
 
-    ******************
-    Domain Calculation
-    ******************
+Domain Calculation
+------------------
 
-    .. toctree::
-       :maxdepth: 1   
-       
-       python/domains_standard_layers
-       python/domains_custom_layers
-       python/domains_custom_XY
+.. toctree::
+   :maxdepth: 1   
+   
+   python/domains_standard_layers
+   python/domains_custom_layers
+   python/domains_custom_XY
 
-    *************
-    Miscellaneous
-    *************
+Miscellaneous
+-------------
 
-    .. toctree::
-       :maxdepth: 1  
-       
-       python/imaginary
-       python/convert_r1_project
-       python/custom_model_languages
+.. toctree::
+   :maxdepth: 1  
+   
+   python/absorption

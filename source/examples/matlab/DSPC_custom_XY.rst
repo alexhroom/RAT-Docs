@@ -16,7 +16,7 @@ In this model, we make distributions to represent the volume fractions of each o
 We also make our volume fractions as optional outputted parameters from our file. The optional nature of this output means we can suppress it to run the model, then
 activate it to make final output plots of our analysis.
 
-.. image:: ../images/examples/volumeFractions.png
+.. image:: ../../images/examples/volumeFractions.jpg
     :align: center
     :alt: Volume fractions
 
