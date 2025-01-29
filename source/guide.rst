@@ -8,7 +8,8 @@ User Guide
    :maxdepth: 2
    
    tutorial/index
-   examples/index
+   matlab_examples/index
+   python_examples/index
    algorithms/index
    advanced/index
    calcTypes/index

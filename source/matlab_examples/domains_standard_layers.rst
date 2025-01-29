@@ -9,7 +9,7 @@ A normal standard layers model defines parameters, which are grouped into layers
 layers are first grouped into domain 'contrasts', which are just groupings of layers with none of the additional parameters of a contrast (such as resolutions
 etc). Then, the actual experimental contrasts are built in the usual way, but with the model set as any two of the domains.
 
-.. image:: ../../images/domainsGraph.png
+.. image:: ../images/domainsGraph.png
     :align: center
     :alt: Domains graph
 

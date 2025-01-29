@@ -45,7 +45,9 @@ RAT contains a number of improvements over legacy RasCAL, including:
 
         * :ref:`guide`: Learn the core principles of RAT with code snippets.
 
-        * :ref:`examples`: Jump into some practical examples.
+        * :ref:`matlabExamples`: Jump into some practical examples for the MATLAB interface.
+
+        * :ref:`pythonExamples`: Explore some practical examples for the Python interface.
 
 
     .. grid-item-card::

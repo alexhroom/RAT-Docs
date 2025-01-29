@@ -9,7 +9,7 @@ For all calculation types, to activate this functionality it is necessary to set
 This example analyses a bilayer sample on a permalloy/gold substrate, measured using polarised neutrons, against D2O and H2O, leading to
 4 contrasts in total. Absorption (i.e. imaginary SLD) is defined for gold and the permalloy, to account for non-flat data below the critical edge. 
 
-.. image:: ../../images/examples/critEdge.png
+.. image:: ../images/examples/critEdge.png
     :align: center
     :alt: Critical Edge 
 
