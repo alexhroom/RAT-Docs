@@ -10,51 +10,24 @@ This parameter tells the function which is the current domain, so the appropriat
 
 This example can be run as a script or interactively using the instructions below.
 
-.. tab-set::
-    :sync-group: code
 
-    .. tab-item:: Matlab
-        :sync: Matlab
+.. note:: The custom model used is a MATLAB model - **examples/domains/customXY/domainsXY.m**.
 
-        .. note:: The custom model used is a MATLAB model - **examples/domains/customXY/domainsXY.m**.
+**Run Script**: 
 
-        **Run Script**: 
+.. code-block:: Matlab 
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'domains', 'customXY'));
-            domainsCustomXYScript
-        
-        **Run Interactively**: 
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'domains', 'customXY'));
+  domainsCustomXYScript
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'domains', 'customXY'));
-            edit domainsCustomXYSheet.mlx
+**Run Interactively**: 
 
+.. code-block:: Matlab 
 
-    .. tab-item:: Python 
-        :sync: Python
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'domains', 'customXY'));
+  edit domainsCustomXYSheet.mlx
 
-        .. note:: The custom model used is a Python model - **RATapi.examples.domains.domains_XY_model.py**.
-        
-        **Run Script**:  
-        
-        .. code-block:: console 
-            
-            python RATapi.examples.domains.domains_custom_XY.py
-
-        **Run as Function**:  
-        
-        .. code-block:: Python 
-            
-            import RATapi as RAT
-            problem, results = RAT.examples.domains.domains_custom_XY()
-        
-        **Run Interactively**:  
-        
-        .. code-block:: console 
-            
-            jupyter notebook RATapi.examples.domains.domains_custom_XY.ipynb
+.. raw:: html
+   :file: domainsCustomXYSheet.html

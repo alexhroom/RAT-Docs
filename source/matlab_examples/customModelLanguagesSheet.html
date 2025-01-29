@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024b"><title>Custom Layers Example for Supported DSPC layer.</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 25px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block }
+.S3 { border-left: 1px solid rgb(217, 217, 217); border-right: 1px solid rgb(217, 217, 217); border-top: 1px solid rgb(217, 217, 217); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(217, 217, 217); border-right: 1px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0px none rgb(33, 33, 33); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(217, 217, 217); border-right: 1px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 1px solid rgb(217, 217, 217); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S7 { border-left: 1px solid rgb(217, 217, 217); border-right: 1px solid rgb(217, 217, 217); border-top: 1px solid rgb(217, 217, 217); border-bottom: 1px solid rgb(217, 217, 217); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Custom Layers Example for Supported DSPC layer.</span></h1><div  class = 'S1'><span>Example of using alternative languages to make a Custom layers to model a DSPC supportd bilayer. </span></div><div  class = 'S1'><span>First, we'll run the project using a conventional Matlab custom model. Then, we will do the same calculation using the same model, but written in Python or C++.</span></div><div  class = 'S1'><span></span></div><h2  class = 'S2'><span>1.  Normal Matlab Custom Model.</span></h2><div  class = 'S1'><span>Start by making the class and setting it to a custom layers type:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >problem = projectClass(</span><span style="color: #a709f5;">'Orso lipid example - custom layers'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.setModelType(modelTypes.CustomLayers.value);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >problem.setGeometry(geometryOptions.SubstrateLiquid.value);</span></span></div></div></div><div  class = 'S6'><span></span></div><div  class = 'S1'><span>First we need to set up a parameters group. We will be using a pre-prepared custom model file, (at the end of the worksheet). Use this to set up the parameters block...</span></div><div  class = 'S1'><span>We need to add the relevant parameters we are going to need to define the model (note that Substrate Roughness' always exists as parameter 1..</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >Parameters = {</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >    </span><span style="color: #008013;">%       Name                min         val         max     fit? </span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >        {</span><span style="color: #a709f5;">'Oxide thick'</span><span >,         5,          20,         60,     true   };</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >        {</span><span style="color: #a709f5;">'Oxide Hydration'</span><span >      0,          0.2,        0.5,    true   };</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >        {</span><span style="color: #a709f5;">'Lipid APM'</span><span >            45          55          65      true   };</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >        {</span><span style="color: #a709f5;">'Head Hydration'</span><span >       0           0.2         0.5     true   };</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >        {</span><span style="color: #a709f5;">'Bilayer Hydration'</span><span >    0           0.1         0.2     true   };</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >        {</span><span style="color: #a709f5;">'Bilayer Roughness'</span><span >    2           4           8       true   };</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >        {</span><span style="color: #a709f5;">'Water Thickness'</span><span >      0           2           10      true   };</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >        };</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >    </span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span > problem.addParameterGroup(Parameters);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span > problem.setParameter(1,</span><span style="color: #a709f5;">'min'</span><span >,1,</span><span style="color: #a709f5;">'max'</span><span >,10); </span><span style="color: #008013;">% Change the substrate roughness limits</span></span></div></div></div><div  class = 'S6'><span></span></div><div  class = 'S1'><span>Need to add the relevant Bulk SLD's. Change the bulk in from air to silicon, and add two additional water contrasts:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: #008013;">% Change bulk in from air to silicon....</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.setBulkIn(1,</span><span style="color: #a709f5;">'name'</span><span >,</span><span style="color: #a709f5;">'Silicon'</span><span >,</span><span style="color: #a709f5;">'min'</span><span >,2.07e-6,</span><span style="color: #a709f5;">'value'</span><span >,2.073e-6,</span><span style="color: #a709f5;">'max'</span><span >,2.08e-6,</span><span style="color: #a709f5;">'fit'</span><span >,false);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% Add two more values for bulk out....</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addBulkOut(</span><span style="color: #a709f5;">'SLD SMW'</span><span >,1e-6,2.073e-6,3e-6,true);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addBulkOut(</span><span style="color: #a709f5;">'SLD H2O'</span><span >,-0.6e-6,-0.56e-6,-0.3e-6,true);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >problem.setBulkOut(1,</span><span style="color: #a709f5;">'fit'</span><span >,true,</span><span style="color: #a709f5;">'min'</span><span >,5e-6);</span></span></div></div></div><div  class = 'S6'><span></span></div><div  class = 'S1'><span>Now add the datafiles. We have three datasets we need to consider - the bilayer against D2O, Silicon Matched water and H2O. Load these datafiles in and put them in the data block....</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: #008013;">% Read in the datafiles</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >root = getappdata(0, </span><span style="color: #a709f5;">'root'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >D2O_data = dlmread(fullfile(root, </span><span style="color: #a709f5;">'/examples/normalReflectivity/customLayers/c_PLP0016596.dat'</span><span >));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >SMW_data = dlmread(fullfile(root, </span><span style="color: #a709f5;">'/examples/normalReflectivity/customLayers/c_PLP0016601.dat'</span><span >));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >H2O_data = dlmread(fullfile(root, </span><span style="color: #a709f5;">'/examples/normalReflectivity/customLayers/c_PLP0016607.dat'</span><span >));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% Add the data to the project</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addData(</span><span style="color: #a709f5;">'Bilayer / D2O'</span><span >, D2O_data(:,1:3));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addData(</span><span style="color: #a709f5;">'Bilayer / SMW'</span><span >, SMW_data(:,1:3));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addData(</span><span style="color: #a709f5;">'Bilayer / H2O'</span><span >, H2O_data(:,1:3));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.setData(2,</span><span style="color: #a709f5;">'dataRange'</span><span >,[0.013 0.37]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.setData(3,</span><span style="color: #a709f5;">'dataRange'</span><span >,[0.013 0.37]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >problem.setData(4,</span><span style="color: #a709f5;">'dataRange'</span><span >,[0.013 0.37]);</span></span></div></div></div><div  class = 'S6'><span></span></div><div  class = 'S1'><span>Add the custom file to the project....</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: #008013;">%                          name         filename        language    path</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >problem.addCustomFile(</span><span style="color: #a709f5;">'DSPC Model'</span><span >, </span><span style="color: #a709f5;">'customBilayer.m'</span><span >, supportedLanguages.Matlab, pwd);</span></span></div></div></div><div  class = 'S6'><span></span></div><div  class = 'S1'><span>Also, add the relevant background parameters - one each for each contrast:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: #008013;">% Change the name of the existing parameters to refer to D2O</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.setBackgroundParam(1,</span><span style="color: #a709f5;">'name'</span><span >,</span><span style="color: #a709f5;">'Backs par D2O'</span><span >,</span><span style="color: #a709f5;">'fit'</span><span >,true,</span><span style="color: #a709f5;">'min'</span><span >,1e-10,</span><span style="color: #a709f5;">'max'</span><span >,1e-5,</span><span style="color: #a709f5;">'val'</span><span >,1e-6);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% Add two new backs parameters for the other two..</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addBackgroundParam(</span><span style="color: #a709f5;">'Backs par SMW'</span><span >,1e-10,1e-6,1e-5,true);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addBackgroundParam(</span><span style="color: #a709f5;">'Backs par H2O'</span><span >,1e-10,1e-6,1e-5,true);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% And add the two new constant backgrounds..</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addBackground(</span><span style="color: #a709f5;">'Background SMW'</span><span >,</span><span style="color: #a709f5;">'constant'</span><span >,</span><span style="color: #a709f5;">'Backs par SMW'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addBackground(</span><span style="color: #a709f5;">'Background H2O'</span><span >,</span><span style="color: #a709f5;">'constant'</span><span >,</span><span style="color: #a709f5;">'Backs par H2O'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% And edit the other one....</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.setBackgroundName(1,</span><span style="color: #a709f5;">'Background D2O'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.setBackground(1,</span><span style="color: #a709f5;">'source'</span><span >,</span><span style="color: #a709f5;">'Backs par D2O'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% Finally modify some of the other parameters to be more suitable values</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% for a solid / liquid experiment.</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% Set the scalefactor...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.setScalefactor(1,</span><span style="color: #a709f5;">'Value'</span><span >,1,</span><span style="color: #a709f5;">'min'</span><span >,0.5,</span><span style="color: #a709f5;">'max'</span><span >,2,</span><span style="color: #a709f5;">'fit'</span><span >,true);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% Finally modify some of the other parameters to be more suitable values</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% for a solid / liquid experiment.</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% Set the scalefactor...</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >problem.setScalefactor(1,</span><span style="color: #a709f5;">'Value'</span><span >,1,</span><span style="color: #a709f5;">'min'</span><span >,0.5,</span><span style="color: #a709f5;">'max'</span><span >,2,</span><span style="color: #a709f5;">'fit'</span><span >,true);</span></span></div></div></div><div  class = 'S1'><span>Now add the three contrasts as before:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: #008013;">% D2O contrast..</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addContrast(</span><span style="color: #a709f5;">'name'</span><span >,        </span><span style="color: #a709f5;">'Bilayer / D2O'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'background'</span><span >,  </span><span style="color: #a709f5;">'Background D2O'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'resolution'</span><span >,  </span><span style="color: #a709f5;">'Resolution 1'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'scalefactor'</span><span >, </span><span style="color: #a709f5;">'Scalefactor 1'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'BulkOut'</span><span >,     </span><span style="color: #a709f5;">'SLD D2O'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'BulkIn'</span><span >,      </span><span style="color: #a709f5;">'Silicon'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'data'</span><span >,        </span><span style="color: #a709f5;">'Bilayer / D2O'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% SMW contrast..</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addContrast(</span><span style="color: #a709f5;">'name'</span><span >,        </span><span style="color: #a709f5;">'Bilayer / SMW'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'background'</span><span >,  </span><span style="color: #a709f5;">'Background SMW'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'resolution'</span><span >,  </span><span style="color: #a709f5;">'Resolution 1'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'scalefactor'</span><span >, </span><span style="color: #a709f5;">'Scalefactor 1'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'BulkOut'</span><span >,     </span><span style="color: #a709f5;">'SLD SMW'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'BulkIn'</span><span >,      </span><span style="color: #a709f5;">'Silicon'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'data'</span><span >,        </span><span style="color: #a709f5;">'Bilayer / SMW'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span style="color: #008013;">% SMW contrast..</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.addContrast(</span><span style="color: #a709f5;">'name'</span><span >,        </span><span style="color: #a709f5;">'Bilayer / H2O'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'background'</span><span >,  </span><span style="color: #a709f5;">'Background H2O'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'resolution'</span><span >,  </span><span style="color: #a709f5;">'Resolution 1'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'scalefactor'</span><span >, </span><span style="color: #a709f5;">'Scalefactor 1'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'BulkOut'</span><span >,     </span><span style="color: #a709f5;">'SLD H2O'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'BulkIn'</span><span >,      </span><span style="color: #a709f5;">'Silicon'</span><span >,</span><span style="color: #0e00ff;">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >                    </span><span style="color: #a709f5;">'data'</span><span >,        </span><span style="color: #a709f5;">'Bilayer / H2O'</span><span >);</span></span></div></div></div><div  class = 'S1'><span>And set the model for each..</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >problem.setContrastModel(1,</span><span style="color: #a709f5;">'DSPC Model'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >problem.setContrastModel(2,</span><span style="color: #a709f5;">'DSPC Model'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >problem.setContrastModel(3,</span><span style="color: #a709f5;">'DSPC Model'</span><span >);</span></span></div></div></div><div  class = 'S6'><span>Look at the complete model definition before sending it to RAT;</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >disp(problem)</span></span></div></div></div><div  class = 'S1'><span>Make a controls block....</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >controls = controlsClass();</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >controls.procedure = </span><span style="color: #a709f5;">'DE'</span><span >;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >controls.display = </span><span style="color: #a709f5;">'final'</span><span >;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >controls.parallel = </span><span style="color: #a709f5;">'contrasts'</span><span >;</span></span></div></div></div><div  class = 'S1'><span>And send this to RAT...</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >[problem,results] = RAT(problem,controls);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >plotRefSLD(problem,results);</span></span></div></div></div><h1  class = 'S0'><span>Using a Python Custom Model.</span></h1><div  class = 'S1'><span>RAT also allows the use of Python custom models (instead of Matlab). The purpose of this is because it is more logical to work with Python custom functions when working with the Python API for RAT, but also since there may be existing libraries in Python which the user might want to use in a custom model.</span></div><div  class = 'S1'><span>The format of the custom model is very similar to the Matlab version. In this example, our model is called customBilayer.py..</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >type </span><span style="color: #a709f5;">customBilayer.py</span></span></div></div></div><div  class = 'S6'><span></span></div><div  class = 'S1'><span>We add this to the project in exactly the same way as a Matlab cutom model....</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >problem.addCustomFile(</span><span style="color: #a709f5;">'pyDSPC'</span><span >,</span><span style="color: #a709f5;">'customBilayer.py'</span><span >,</span><span style="color: #a709f5;">'Python'</span><span >,pwd);</span></span></div></div></div><div  class = 'S6'><span>...then set the models of our contrasts accordingly....</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: #0e00ff;">for </span><span >i = 1:3</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >    problem.setContrastModel(i,</span><span style="color: #a709f5;">'pyDSPC'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div></div><div  class = 'S6'></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Custom Layers Example for Supported DSPC layer.
+% Example of using alternative languages to make a Custom layers to model a 
+% DSPC supportd bilayer. 
+% 
+% First, we'll run the project using a conventional Matlab custom model. Then, 
+% we will do the same calculation using the same model, but written in Python 
+% or C++.
+% 
+% 
+%% 1.  Normal Matlab Custom Model.
+% Start by making the class and setting it to a custom layers type:
+
+problem = projectClass('Orso lipid example - custom layers');
+problem.setModelType(modelTypes.CustomLayers.value);
+problem.setGeometry(geometryOptions.SubstrateLiquid.value);
+%% 
+% 
+% 
+% First we need to set up a parameters group. We will be using a pre-prepared 
+% custom model file, (at the end of the worksheet). Use this to set up the parameters 
+% block...
+% 
+% We need to add the relevant parameters we are going to need to define the 
+% model (note that Substrate Roughness' always exists as parameter 1..
+
+Parameters = {
+    %       Name                min         val         max     fit? 
+        {'Oxide thick',         5,          20,         60,     true   };
+        {'Oxide Hydration'      0,          0.2,        0.5,    true   };
+        {'Lipid APM'            45          55          65      true   };
+        {'Head Hydration'       0           0.2         0.5     true   };
+        {'Bilayer Hydration'    0           0.1         0.2     true   };
+        {'Bilayer Roughness'    2           4           8       true   };
+        {'Water Thickness'      0           2           10      true   };
+        };
+    
+ problem.addParameterGroup(Parameters);
+ problem.setParameter(1,'min',1,'max',10); % Change the substrate roughness limits
+%% 
+% 
+% 
+% Need to add the relevant Bulk SLD's. Change the bulk in from air to silicon, 
+% and add two additional water contrasts:
+
+% Change bulk in from air to silicon....
+problem.setBulkIn(1,'name','Silicon','min',2.07e-6,'value',2.073e-6,'max',2.08e-6,'fit',false);
+
+% Add two more values for bulk out....
+problem.addBulkOut('SLD SMW',1e-6,2.073e-6,3e-6,true);
+problem.addBulkOut('SLD H2O',-0.6e-6,-0.56e-6,-0.3e-6,true);
+
+problem.setBulkOut(1,'fit',true,'min',5e-6);
+%% 
+% 
+% 
+% Now add the datafiles. We have three datasets we need to consider - the bilayer 
+% against D2O, Silicon Matched water and H2O. Load these datafiles in and put 
+% them in the data block....
+
+% Read in the datafiles
+root = getappdata(0, 'root');
+D2O_data = dlmread(fullfile(root, '/examples/normalReflectivity/customLayers/c_PLP0016596.dat'));
+SMW_data = dlmread(fullfile(root, '/examples/normalReflectivity/customLayers/c_PLP0016601.dat'));
+H2O_data = dlmread(fullfile(root, '/examples/normalReflectivity/customLayers/c_PLP0016607.dat'));
+
+% Add the data to the project
+problem.addData('Bilayer / D2O', D2O_data(:,1:3));
+problem.addData('Bilayer / SMW', SMW_data(:,1:3));
+problem.addData('Bilayer / H2O', H2O_data(:,1:3));
+
+problem.setData(2,'dataRange',[0.013 0.37]);
+problem.setData(3,'dataRange',[0.013 0.37]);
+problem.setData(4,'dataRange',[0.013 0.37]);
+%% 
+% 
+% 
+% Add the custom file to the project....
+
+%                          name         filename        language    path
+problem.addCustomFile('DSPC Model', 'customBilayer.m', supportedLanguages.Matlab, pwd);
+%% 
+% 
+% 
+% Also, add the relevant background parameters - one each for each contrast:
+
+% Change the name of the existing parameters to refer to D2O
+problem.setBackgroundParam(1,'name','Backs par D2O','fit',true,'min',1e-10,'max',1e-5,'val',1e-6);
+
+% Add two new backs parameters for the other two..
+problem.addBackgroundParam('Backs par SMW',1e-10,1e-6,1e-5,true);
+problem.addBackgroundParam('Backs par H2O',1e-10,1e-6,1e-5,true);
+
+% And add the two new constant backgrounds..
+problem.addBackground('Background SMW','constant','Backs par SMW');
+problem.addBackground('Background H2O','constant','Backs par H2O');
+
+
+% And edit the other one....
+problem.setBackgroundName(1,'Background D2O');
+problem.setBackground(1,'source','Backs par D2O');
+
+% Finally modify some of the other parameters to be more suitable values
+% for a solid / liquid experiment.
+
+% Set the scalefactor...
+problem.setScalefactor(1,'Value',1,'min',0.5,'max',2,'fit',true);
+
+
+% Finally modify some of the other parameters to be more suitable values
+% for a solid / liquid experiment.
+
+% Set the scalefactor...
+problem.setScalefactor(1,'Value',1,'min',0.5,'max',2,'fit',true);
+%% 
+% Now add the three contrasts as before:
+
+% D2O contrast..
+problem.addContrast('name',        'Bilayer / D2O',...
+                    'background',  'Background D2O',...
+                    'resolution',  'Resolution 1',...
+                    'scalefactor', 'Scalefactor 1',...
+                    'BulkOut',     'SLD D2O',...
+                    'BulkIn',      'Silicon',...
+                    'data',        'Bilayer / D2O');
+
+% SMW contrast..
+problem.addContrast('name',        'Bilayer / SMW',...
+                    'background',  'Background SMW',...
+                    'resolution',  'Resolution 1',...
+                    'scalefactor', 'Scalefactor 1',...
+                    'BulkOut',     'SLD SMW',...
+                    'BulkIn',      'Silicon',...
+                    'data',        'Bilayer / SMW');
+
+% SMW contrast..
+problem.addContrast('name',        'Bilayer / H2O',...
+                    'background',  'Background H2O',...
+                    'resolution',  'Resolution 1',...
+                    'scalefactor', 'Scalefactor 1',...
+                    'BulkOut',     'SLD H2O',...
+                    'BulkIn',      'Silicon',...
+                    'data',        'Bilayer / H2O');
+%% 
+% And set the model for each..
+
+problem.setContrastModel(1,'DSPC Model');
+problem.setContrastModel(2,'DSPC Model');
+problem.setContrastModel(3,'DSPC Model');
+%% 
+% Look at the complete model definition before sending it to RAT;
+
+disp(problem)
+%% 
+% Make a controls block....
+
+controls = controlsClass();
+controls.procedure = 'DE';
+controls.display = 'final';
+controls.parallel = 'contrasts';
+%% 
+% And send this to RAT...
+
+[problem,results] = RAT(problem,controls);
+plotRefSLD(problem,results);
+%% Using a Python Custom Model.
+% RAT also allows the use of Python custom models (instead of Matlab). The purpose 
+% of this is because it is more logical to work with Python custom functions when 
+% working with the Python API for RAT, but also since there may be existing libraries 
+% in Python which the user might want to use in a custom model.
+% 
+% The format of the custom model is very similar to the Matlab version. In this 
+% example, our model is called customBilayer.py..
+
+type customBilayer.py
+%% 
+% 
+% 
+% We add this to the project in exactly the same way as a Matlab cutom model....
+
+problem.addCustomFile('pyDSPC','customBilayer.py','Python',pwd);
+%% 
+% ...then set the models of our contrasts accordingly....
+
+for i = 1:3
+    problem.setContrastModel(i,'pyDSPC');
+end
+%% 
+%
+##### SOURCE END #####
+-->
+</div></body></html>

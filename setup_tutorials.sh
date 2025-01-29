@@ -7,3 +7,5 @@ cp -r python-RAT/RATapi/examples/absorption/* source/python_examples/notebooks/
 cp -r python-RAT/RATapi/examples/data source/python_examples/
 
 rm -rf python-RAT
+
+cat setup_livescripts.m | matlab -nodisplay -nosplash

@@ -17,51 +17,25 @@ In addition, the datasets for this example, have a resolution (per point) in the
 
 This example can be run as a script or interactively using the instructions below.
 
-.. tab-set::
-    :sync-group: code
 
-    .. tab-item:: Matlab
-        :sync: Matlab
+.. note:: The custom model used is a MATLAB model - **examples/normalReflectivity/customLayers/customBilayerDSPC.m**.
 
-        .. note:: The custom model used is a MATLAB model - **examples/normalReflectivity/customLayers/customBilayerDSPC.m**.
+**Run Script**: 
 
-        **Run Script**: 
+.. code-block:: Matlab 
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'normalReflectivity', 'customLayers'));
-            customLayersDSPCScript
-        
-        **Run Interactively**: 
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'normalReflectivity', 'customLayers'));
+  customLayersDSPCScript
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'normalReflectivity', 'customLayers'));
-            edit customLayersDSPCSheet.mlx
+**Run Interactively**: 
+
+.. code-block:: Matlab 
+
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'normalReflectivity', 'customLayers'));
+  edit customLayersDSPCSheet.mlx
 
 
-    .. tab-item:: Python 
-        :sync: Python
-
-        .. note:: The custom model used is a Python model - **RATapi.examples.normal_reflectivity.custom_bilayer_DSPC.py**.
-
-        **Run Script**:  
-        
-        .. code-block:: console 
-            
-            python RATapi.examples.normal_reflectivity.DSPC_custom_layers.py
-
-        **Run as Function**:  
-        
-        .. code-block:: Python 
-            
-            import RATapi as RAT
-            problem, results = RAT.examples.normal_reflectivity.DSPC_custom_layers()
-        
-        **Run Interactively**:  
-        
-        .. code-block:: console 
-            
-            jupyter notebook RATapi.examples.normal_reflectivity.DSPC_custom_layers.ipynb
+.. raw:: html
+   :file: customLayersDSPCSheet.html

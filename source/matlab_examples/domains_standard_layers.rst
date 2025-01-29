@@ -18,47 +18,22 @@ for domain ratios which is set as one of the values from this block.
 
 This example can be run as a script or interactively using the instructions below.
 
-.. tab-set::
-    :sync-group: code
+**Run Script**: 
 
-    .. tab-item:: Matlab
-        :sync: Matlab
+.. code-block:: Matlab 
 
-        **Run Script**: 
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'domains', 'standardLayers'));
+  domainsStandardLayersScript
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'domains', 'standardLayers'));
-            domainsStandardLayersScript
-        
-        **Run Interactively**: 
+**Run Interactively**: 
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'domains', 'standardLayers'));
-            edit domainsStandardLayersSheet.mlx
+.. code-block:: Matlab 
+
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'domains', 'standardLayers'));
+  edit domainsStandardLayersSheet.mlx
 
 
-    .. tab-item:: Python 
-        :sync: Python
-
-        **Run Script**:  
-        
-        .. code-block:: console 
-            
-            python RATapi.examples.domains.domains_standard_layers.py
-
-        **Run as Function**:  
-        
-        .. code-block:: Python 
-            
-            import RATapi as RAT
-            problem, results = RAT.examples.domains.domains_standard_layers()
-        
-        **Run Interactively**:  
-        
-        .. code-block:: console 
-            
-            jupyter notebook RATapi.examples.domains.domains_standard_layers.ipynb
+.. raw:: html
+   :file: domainsStandardLayersSheet.html

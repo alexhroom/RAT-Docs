@@ -9,47 +9,22 @@ The model is set up in the script, we set Gaussian priors on some of the paramet
 
 This example can be run as a script or interactively using the instructions below.
 
-.. tab-set::
-    :sync-group: code
 
-    .. tab-item:: Matlab
-        :sync: Matlab
+**Run Script**: 
 
-        **Run Script**: 
+.. code-block:: Matlab 
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'normalReflectivity', 'standardLayers'));
-            standardLayersDSPCScript
-        
-        **Run Interactively**: 
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'normalReflectivity', 'standardLayers'));
+  standardLayersDSPCScript
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'normalReflectivity', 'standardLayers'));
-            edit standardLayersDSPCSheet.mlx
+**Run Interactively**: 
 
+.. code-block:: Matlab 
 
-    .. tab-item:: Python 
-        :sync: Python
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'normalReflectivity', 'standardLayers'));
+  edit standardLayersDSPCSheet.mlx
 
-        **Run Script**:  
-        
-        .. code-block:: console 
-            
-            python RATapi.examples.normal_reflectivity.DSPC_standard_layers.py
-
-        **Run as Function**:  
-        
-        .. code-block:: Python 
-            
-            import RATapi as RAT
-            problem, results = RAT.examples.normal_reflectivity.DSPC_standard_layers()
-        
-        **Run Interactively**:  
-        
-        .. code-block:: console 
-            
-            jupyter notebook RATapi.examples.normal_reflectivity.DSPC_standard_layers.ipynb
+.. raw:: html
+   :file: standardLayersDSPCSheet.html

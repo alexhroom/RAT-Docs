@@ -9,44 +9,15 @@ function **Model_IIb.m** which in the example directory is required to run the c
 
 This example can be run using the instructions below.
 
-.. tab-set::
-    :sync-group: code
+.. note:: The custom model used is a MATLAB model - **examples/miscellaneous/convertRascal1Project/Model_IIb.m**.      
 
-    .. tab-item:: Matlab
-        :sync: Matlab  
+**Run Interactively**: 
 
-        .. note:: The custom model used is a MATLAB model - **examples/miscellaneous/convertRascal1Project/Model_IIb.m**.      
-        
-        **Run Interactively**: 
+.. code-block:: Matlab 
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'miscellaneous', 'convertRascal1Project'));
-            edit convertRascal.mlx
+    root = getappdata(0, 'root');
+    cd(fullfile(root, 'examples', 'miscellaneous', 'convertRascal1Project'));
+    edit convertRascal.mlx
 
-
-    .. tab-item:: Python 
-        :sync: Python  
-
-        .. note:: The custom model used is a MATLAB model - **RATapi.examples.convert_rascal_project.Model_IIb.m**. 
-            A python version is provided for the jupyter notebook - **RATapi.examples.convert_rascal_project.Model_IIb.py**
-
-        **Run Script**:  
-        
-        .. code-block:: console 
-            
-            python RATapi.examples.convert_rascal_project.convert_rascal.py
-
-        **Run as Function**:  
-        
-        .. code-block:: Python 
-            
-            import RATapi as RAT
-            problem, results = RAT.examples.convert_rascal_project.convert_rascal()
-        
-        **Run Interactively**:  
-        
-        .. code-block:: console 
-            
-            jupyter notebook RATapi.examples.convert_rascal_project.convert_rascal.ipynb
+.. raw:: html
+   :file: convertRascal.html

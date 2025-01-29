@@ -10,51 +10,24 @@ This parameter tells the function which is the current domain, so the appropriat
 
 This example can be run as a script or interactively using the instructions below.
 
-.. tab-set::
-    :sync-group: code
 
-    .. tab-item:: Matlab
-        :sync: Matlab
+.. note:: The custom model used is a MATLAB model - **examples/domains/customLayers/alloyDomains.m**.
 
-        .. note:: The custom model used is a MATLAB model - **examples/domains/customLayers/alloyDomains.m**.
+**Run Script**: 
 
-        **Run Script**: 
+.. code-block:: Matlab 
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'domains', 'customLayers'));
-            domainsCustomXYScript
-        
-        **Run Interactively**: 
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'domains', 'customLayers'));
+  domainsCustomLayersScript
 
-        .. code-block:: Matlab 
-        
-            root = getappdata(0, 'root');
-            cd(fullfile(root, 'examples', 'domains', 'customLayers'));
-            edit domainsCustomXYSheet.mlx
+**Run Interactively**: 
 
+.. code-block:: Matlab 
 
-    .. tab-item:: Python 
-        :sync: Python
+  root = getappdata(0, 'root');
+  cd(fullfile(root, 'examples', 'domains', 'customLayers'));
+  edit domainsCustomLayersSheet.mlx
 
-        .. note:: The custom model used is a Python model - **RATapi.examples.domains.alloy_domains.py**.
-
-        **Run Script**:  
-        
-        .. code-block:: console 
-            
-            python RATapi.examples.domains.domains_custom_layers.py
-
-        **Run as Function**:  
-        
-        .. code-block:: Python 
-            
-            import RATapi as RAT
-            problem, results = RAT.examples.domains.domains_custom_layers()
-        
-        **Run Interactively**:  
-        
-        .. code-block:: console 
-            
-            jupyter notebook RATapi.examples.domains.domains_custom_layers.ipynb
+.. raw:: html
+   :file: domainsCustomLayersSheet.html
