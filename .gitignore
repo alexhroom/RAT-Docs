@@ -13,3 +13,7 @@ build/
 source/.buildinfo
 source/*.inv
 source/_outputs/
+source/python_examples/data/
+source/matlab_examples/*.html
+source/python_examples/notebooks/*
+!source/python_examples/notebooks/README.md
