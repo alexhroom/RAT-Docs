@@ -7,8 +7,10 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 import os
 import sys
+import shutil
 import datetime
 from urllib.parse import urljoin
+from pathlib import Path
 # -- Project information -----------------------------------------------------
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -33,7 +35,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(".")))
 sys.path.insert(0, os.path.dirname(os.path.abspath("..")))
 from version import get_doc_version
 doc_version = get_doc_version()
-    
+
 # -- General configuration ---------------------------------------------------
 
 # add extensions path for snippets
@@ -43,6 +45,39 @@ extensions = ['sphinxcontrib.matlab', 'sphinx.ext.autodoc', 'sphinx.ext.autosumm
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+
+# -- Setup example files -----------------------------------------------------
+if not os.path.isdir("./python_examples/data"):
+    os.system('git clone --depth 1 --branch 0.0.0.dev4 https://github.com/RascalSoftware/python-RAT')
+    print("Copying Jupyter notebooks...")
+    for directory in ['normal_reflectivity', 'domains', 'absorption']:
+        for file in Path(f"./python-RAT/RATapi/examples/{directory}/").glob('*'):
+            shutil.copy(file, "./python_examples/notebooks/")
+
+    shutil.copytree("./python-RAT/RATapi/examples/data", "./python_examples/data", dirs_exist_ok=True)
+
+    shutil.rmtree("./python-RAT")
+
+if not os.path.isfile("./matlab_examples/standardLaersDSPCSheet.html"):
+    try:
+        from matlab.engine import start_matlab
+    except ImportError:
+        print("Could not copy MATLAB live scripts as MATLAB is not installed.")
+    else:
+        print("Starting MATLAB Engine...")
+        eng = start_matlab()
+        for sheet in ['normalReflectivity/standardLayers/standardLayersDSPCSheet', 
+                      'normalReflectivity/customLayers/customLayersDSPCSheet', 
+                      'normalReflectivity/customXY/customXYDSPCSheet', 
+                      'domains/standardLayers/domainsStandardLayersSheet', 
+                      'domains/customLayers/domainsCustomLayersSheet',
+                      'domains/customXY/domainsCustomXYSheet',
+                      'miscellaneous/convertRascal1Project/convertRascal',
+                      'miscellaneous/alternativeLanguages/customModelLanguagesSheet',]:
+            filename = Path(sheet).name
+            print(f"exporting {sheet}")
+            eng.export(f"../API/examples/{sheet}.mlx", f"./matlab_examples/{filename}.html", nargout=0)
+
 
 # -- Options for HTML output -------------------------------------------------
 #set primary_domain = 'matlab'
